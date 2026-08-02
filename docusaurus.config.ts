@@ -61,9 +61,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Docs live at the site root: api.msc-qcu.tech/<section>/<page>.
-          // URLs mirror the API paths (e.g. /api/v1/applicants).
-          routeBasePath: '/',
+          // Landing page owns the site root; docs live under /docs/.
+          // URLs mirror the API paths (e.g. /docs/api/v1/applicants).
+          routeBasePath: 'docs',
           // "Edit this page" links point to the source of truth (backend repo docs).
           editUrl: BACKEND_DOCS_ROOT,
         },
@@ -80,7 +80,7 @@ const config: Config = {
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
-        docsRouteBasePath: '/',
+        docsRouteBasePath: 'docs',
         indexBlog: false,
       },
     ],
@@ -100,7 +100,7 @@ const config: Config = {
     navbar: {
       items: [
         {
-          to: '/',
+          to: '/docs/',
           position: 'left',
           label: 'Docs',
         },
@@ -117,10 +117,10 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Overview', to: '/intro'},
-            {label: 'Quickstart', to: '/getting-started/quickstart'},
-            {label: 'API v1 Reference', to: '/api/v1/applicants'},
-            {label: 'Data Models', to: '/specs/data-models/overview'},
+            {label: 'Overview', to: '/docs/intro'},
+            {label: 'Quickstart', to: '/docs/getting-started/quickstart'},
+            {label: 'API v1 Reference', to: '/docs/api/v1/applicants'},
+            {label: 'Data Models', to: '/docs/specs/data-models/overview'},
           ],
         },
         {
