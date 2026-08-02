@@ -1,46 +1,224 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * QCU MSC Central Portal — API Docs
+ * Theme ported from the portal frontend (frontend/src/styles.css).
+ * Design tokens are kept verbatim (oklch); Infima maps onto them.
  */
 
-/* QCU MSC brand palette (from the main portal frontend):
-   --primary: #f25022 (Microsoft orange)
-   --accent:  #0084d4 (Microsoft blue)
-   --green:   #7fba00 (Microsoft green) */
-
 :root {
-  --ifm-color-primary: #f25022;
-  --ifm-color-primary-dark: #e04418;
-  --ifm-color-primary-darker: #d33f16;
-  --ifm-color-primary-darkest: #ae3412;
-  --ifm-color-primary-light: #f3663e;
-  --ifm-color-primary-lighter: #f4714c;
-  --ifm-color-primary-lightest: #f69272;
-  --ifm-color-secondary: #0084d4;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* ---- Brand tokens (verbatim from frontend/src/styles.css) ---- */
+  --brand-orange: oklch(0.66 0.21 32);
+  --brand-green: oklch(0.74 0.18 135);
+  --brand-blue: oklch(0.68 0.18 240);
+  --brand-yellow: oklch(0.85 0.18 88);
+  --brand-blue-deep: oklch(0.32 0.14 255);
+  --brand-blue-light: oklch(0.92 0.05 235);
+
+  --background: oklch(0.98 0.02 235);
+  --foreground: oklch(0.18 0.05 255);
+  --card: oklch(1 0 0);
+  --secondary: oklch(0.95 0.03 235);
+  --muted: oklch(0.96 0.02 235);
+  --muted-foreground: oklch(0.5 0.05 255);
+  --accent: oklch(0.92 0.05 235);
+  --border: oklch(0.9 0.03 235);
+  --ring: oklch(0.68 0.18 240);
+  --radius: 0.875rem;
+
+  --gradient-sky: linear-gradient(
+    180deg,
+    oklch(0.18 0.08 255) 0%,
+    oklch(0.22 0.1 254) 25%,
+    oklch(0.38 0.14 250) 50%,
+    oklch(0.62 0.16 242) 60%,
+    oklch(0.82 0.1 235) 78%,
+    oklch(0.96 0.02 235) 100%
+  );
+  --gradient-cta: linear-gradient(135deg, var(--brand-orange), oklch(0.72 0.2 50));
+  --gradient-text: linear-gradient(
+    120deg,
+    var(--brand-orange),
+    var(--brand-yellow),
+    var(--brand-green),
+    var(--brand-blue)
+  );
+
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 10px 40px -10px color-mix(in oklab, var(--brand-blue-deep) 35%, transparent);
+
+  --ms-stripe: linear-gradient(90deg, #f25022 0 25%, #7fba00 25% 50%, #00a4ef 50% 75%, #ffb900 75% 100%);
+
+  --ring-card: 1px solid color-mix(in oklab, var(--brand-blue-deep) 10%, transparent);
+
+  /* ---- Infima mapping (light) ---- */
+  --ifm-color-primary: var(--brand-blue);
+  --ifm-color-primary-dark: oklch(0.62 0.17 240);
+  --ifm-color-primary-darker: oklch(0.58 0.16 240);
+  --ifm-color-primary-darkest: oklch(0.5 0.14 242);
+  --ifm-color-primary-light: oklch(0.74 0.17 240);
+  --ifm-color-primary-lighter: oklch(0.8 0.15 240);
+  --ifm-color-primary-lightest: oklch(0.88 0.1 240);
+  --ifm-color-secondary: var(--secondary);
+  --ifm-color-secondary-dark: oklch(0.9 0.04 235);
+  --ifm-color-secondary-darker: oklch(0.87 0.04 235);
+  --ifm-color-secondary-darkest: oklch(0.82 0.05 238);
+  --ifm-color-secondary-light: oklch(0.96 0.02 235);
+  --ifm-color-secondary-lighter: oklch(0.97 0.02 235);
+  --ifm-color-secondary-lightest: oklch(0.985 0.01 235);
+
+  --ifm-background-color: var(--background);
+  --ifm-background-surface-color: var(--card);
+  --ifm-font-color-base: var(--foreground);
+  --ifm-font-family-base: 'Rubik', system-ui, sans-serif;
+  --ifm-font-weight-base: 400;
+  --ifm-heading-font-family: 'Sora', system-ui, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-heading-color: var(--foreground);
+  --ifm-heading-letter-spacing: -0.02em;
+  --ifm-global-radius: var(--radius);
+  --ifm-card-border-radius: calc(var(--radius) + 12px); /* rounded-3xl */
+  --ifm-code-font-size: 92%;
+  --ifm-code-background: var(--brand-blue-light);
+  --ifm-code-color: oklch(0.28 0.1 252);
+  --ifm-link-color: var(--brand-blue);
+  --ifm-link-hover-color: oklch(0.6 0.18 240);
+  --ifm-blockquote-border-color: var(--brand-orange);
+  --ifm-table-border-color: var(--border);
+  --ifm-toc-border-color: var(--border);
+  --ifm-hr-border-color: var(--border);
+  --ifm-menu-color-background-active: var(--brand-blue-light);
+  --ifm-menu-color-active: oklch(0.28 0.1 252);
+  --ifm-menu-color-background-hover: color-mix(in oklab, var(--brand-blue-light) 55%, transparent);
+  --ifm-navbar-background-color: var(--glass-bg);
+  --ifm-navbar-link-hover-color: var(--brand-orange);
+  --ifm-navbar-link-active-color: var(--brand-orange);
+  --ifm-navbar-shadow: 0 1px 0 0 var(--border), 0 8px 24px -16px color-mix(in oklab, var(--brand-blue-deep) 30%, transparent);
+  --ifm-footer-background-color: var(--brand-blue-deep);
+  --ifm-footer-color: rgba(255, 255, 255, 0.72);
+  --ifm-footer-link-color: rgba(255, 255, 255, 0.8);
+  --ifm-footer-link-hover-color: var(--brand-orange);
+  --ifm-footer-title-color: #ffffff;
+  --ifm-pagination-nav-border-radius: calc(var(--radius) + 8px);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+
+  --ifm-color-emphasis-100: oklch(0.97 0.02 250);
+  --ifm-color-emphasis-200: oklch(0.94 0.03 250);
+  --ifm-color-emphasis-300: oklch(0.86 0.04 250);
+  --ifm-color-emphasis-400: oklch(0.7 0.06 252);
+  --ifm-color-emphasis-500: oklch(0.55 0.06 254);
+  --ifm-color-emphasis-600: oklch(0.45 0.06 255);
+  --ifm-color-emphasis-700: oklch(0.35 0.07 255);
+  --ifm-color-emphasis-800: oklch(0.28 0.07 255);
+  --ifm-color-emphasis-900: oklch(0.18 0.05 255);
+  --ifm-color-emphasis-1000: oklch(0.1 0.04 255);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ---- Dark mode: "space" palette (derived from --gradient-space) ---- */
 [data-theme='dark'] {
-  --ifm-color-primary: #ff8a6b;
-  --ifm-color-primary-dark: #ff6f49;
-  --ifm-color-primary-darker: #ff6137;
-  --ifm-color-primary-darkest: #f64517;
-  --ifm-color-primary-light: #ffa58d;
-  --ifm-color-primary-lighter: #ffb3a0;
-  --ifm-color-primary-lightest: #ffd3c8;
-  --ifm-color-secondary: #3ea8e8;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: oklch(0.72 0.18 240);
+  --ifm-color-primary-dark: oklch(0.66 0.17 240);
+  --ifm-color-primary-darker: oklch(0.62 0.16 240);
+  --ifm-color-primary-darkest: oklch(0.55 0.14 242);
+  --ifm-color-primary-light: oklch(0.79 0.16 240);
+  --ifm-color-primary-lighter: oklch(0.84 0.13 240);
+  --ifm-color-primary-lightest: oklch(0.9 0.09 240);
+
+  --ifm-background-color: oklch(0.18 0.08 255);
+  --ifm-background-surface-color: oklch(0.22 0.09 258);
+  --ifm-font-color-base: oklch(0.92 0.02 240);
+  --ifm-heading-color: oklch(0.96 0.02 240);
+  --ifm-code-background: oklch(0.3 0.06 258);
+  --ifm-code-color: oklch(0.86 0.05 240);
+  --ifm-link-hover-color: oklch(0.8 0.16 240);
+  --ifm-blockquote-border-color: oklch(0.66 0.21 32);
+  --ifm-table-border-color: oklch(0.3 0.06 258);
+  --ifm-toc-border-color: oklch(0.3 0.06 258);
+  --ifm-menu-color-background-active: oklch(0.3 0.09 258);
+  --ifm-menu-color-active: oklch(0.85 0.06 240);
+  --ifm-menu-color-background-hover: oklch(0.26 0.08 258);
+  --ifm-navbar-background-color: oklch(0.2 0.08 256 / 0.82);
+  --ifm-navbar-shadow: 0 1px 0 0 oklch(0.3 0.06 258), 0 8px 24px -16px oklch(0 0 0 / 0.6);
+  --ifm-footer-background-color: oklch(0.14 0.06 262);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.12);
+
+  --ifm-color-emphasis-100: oklch(0.3 0.06 258);
+  --ifm-color-emphasis-200: oklch(0.38 0.06 258);
+  --ifm-color-emphasis-300: oklch(0.5 0.05 258);
+  --ifm-color-emphasis-400: oklch(0.62 0.05 256);
+  --ifm-color-emphasis-500: oklch(0.72 0.04 255);
+  --ifm-color-emphasis-600: oklch(0.8 0.03 250);
+  --ifm-color-emphasis-700: oklch(0.86 0.03 245);
+  --ifm-color-emphasis-800: oklch(0.9 0.02 242);
+  --ifm-color-emphasis-900: oklch(0.92 0.02 240);
+  --ifm-color-emphasis-1000: oklch(0.98 0.01 240);
 }
 
-/* Subtle brand accent for the navbar when scrolled */
-.navbar--fixed-top.scrolled {
-  box-shadow: 0 1px 2px rgba(242, 80, 34, 0.18);
+/* ---- Base ---- */
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Navbar brand: logo + two-line wordmark (portal style) */
+body {
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* ---- Navbar: glass + MS 4-color stripe ---- */
+.navbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--ms-stripe);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+.navbar__link--active {
+  font-weight: 600;
+}
+
+.navbar__toggle {
+  color: var(--ifm-font-color-base);
+}
+
+/* Search button (easyops search-local) — glass pill */
+.search-container .search-button {
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--ifm-background-surface-color) 65%, transparent);
+  color: var(--ifm-color-emphasis-600);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.search-container .search-button:hover {
+  border-color: var(--brand-blue);
+}
+
+.search-modal .search-bar {
+  border-radius: 9999px;
+}
+
+/* ---- Navbar brand: logo + two-line wordmark (portal style) ---- */
 .navbar-brand {
   gap: 0.65rem;
 }
@@ -63,7 +241,7 @@
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--ifm-color-emphasis-900);
+  color: var(--brand-blue-deep);
 }
 
 .navbar-brand__org {
@@ -72,11 +250,180 @@
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--ifm-color-emphasis-600);
+  color: color-mix(in oklab, var(--brand-blue-deep) 70%, transparent);
+}
+
+[data-theme='dark'] .navbar-brand__name {
+  color: oklch(0.96 0.02 240);
+}
+
+[data-theme='dark'] .navbar-brand__org {
+  color: color-mix(in oklab, oklch(0.92 0.02 240) 65%, transparent);
 }
 
 @media (max-width: 480px) {
   .navbar-brand__lines {
     display: none;
+  }
+}
+
+/* ---- Buttons: gradient-cta pill + glass pill ---- */
+.button--primary,
+.button--primary:hover,
+.button--primary:active {
+  background: var(--gradient-cta);
+  border: none;
+  color: #fff;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--brand-orange) 55%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px -10px color-mix(in oklab, var(--brand-orange) 65%, transparent);
+}
+
+.button--secondary,
+.button--secondary:hover {
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  color: var(--brand-blue-deep);
+  border-radius: 9999px;
+  box-shadow: var(--glass-shadow);
+}
+
+[data-theme='dark'] .button--secondary {
+  background: oklch(0.24 0.08 258);
+  border-color: oklch(0.34 0.07 258);
+  color: oklch(0.92 0.02 240);
+}
+
+/* ---- Cards: white, rounded-3xl, navy ring + soft shadow ---- */
+.card {
+  background: var(--ifm-background-surface-color);
+  border: var(--ring-card);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 44px -12px color-mix(in oklab, var(--brand-blue-deep) 40%, transparent);
+}
+
+.card__header h3 {
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='dark'] .card {
+  border-color: oklch(0.3 0.06 258);
+}
+
+/* ---- Code blocks: navy in light mode (moon theme), deep navy in dark ---- */
+.theme-code-block {
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid oklch(0.3 0.05 258 / 0.35);
+  box-shadow: 0 8px 24px -16px oklch(0 0 0 / 0.5);
+}
+
+code {
+  border: none;
+}
+
+/* Inline code — blue-deep on blue-light pill */
+:not(pre) > code {
+  background: var(--ifm-code-background);
+  color: var(--ifm-code-color);
+  border-radius: 6px;
+  padding: 0.15rem 0.4rem;
+  font-weight: 500;
+}
+
+/* ---- Tables ---- */
+.table-wrapper table {
+  border-radius: calc(var(--radius) + 4px);
+  overflow: hidden;
+  border: 1px solid var(--ifm-table-border-color);
+  box-shadow: 0 4px 16px -12px color-mix(in oklab, var(--brand-blue-deep) 30%, transparent);
+}
+
+.theme-doc-markdown table thead tr {
+  background: var(--muted);
+}
+
+.theme-doc-markdown table tbody tr:hover {
+  background: color-mix(in oklab, var(--brand-blue-light) 45%, transparent);
+}
+
+/* ---- Sidebar ---- */
+.menu__link {
+  border-radius: 0.625rem;
+  font-weight: 500;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  font-weight: 600;
+}
+
+/* ---- Footer: deep navy, MS stripe on top ---- */
+.footer {
+  border-top: 4px solid transparent;
+  background-image: linear-gradient(var(--ifm-footer-background-color), var(--ifm-footer-background-color)),
+    var(--ms-stripe);
+  background-size: 100% calc(100% - 4px), 100% 4px;
+  background-repeat: no-repeat;
+  background-position: bottom, top;
+}
+
+.footer__link-item {
+  opacity: 1;
+}
+
+/* ---- Pagination / bottom nav: card style ---- */
+.pagination-nav__link {
+  background: var(--ifm-background-surface-color);
+  border: var(--ring-card);
+  border-radius: var(--ifm-pagination-nav-border-radius);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -14px color-mix(in oklab, var(--brand-blue-deep) 45%, transparent);
+  border-color: var(--brand-blue);
+}
+
+[data-theme='dark'] .pagination-nav__link {
+  border-color: oklch(0.3 0.06 258);
+}
+
+/* ---- Misc polish ---- */
+.theme-doc-breadcrumbs {
+  font-size: 0.85rem;
+}
+
+.theme-edit-this-page {
+  font-weight: 600;
+}
+
+.admonition {
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 4px 16px -14px color-mix(in oklab, var(--brand-blue-deep) 40%, transparent);
+}
+
+/* Theme toggle icon colors follow the current mode */
+[data-theme='dark'] .clean-btn svg {
+  color: oklch(0.92 0.02 240);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .button--primary,
+  .pagination-nav__link {
+    transition: none;
   }
 }

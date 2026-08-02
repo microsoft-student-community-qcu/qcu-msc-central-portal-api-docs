@@ -41,7 +41,7 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Roboto:wght@500;600;700&family=Rubik:wght@400;500&family=Sora:wght@600;700;800&display=swap',
       },
     },
   ],
@@ -141,10 +141,11 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} QCU Microsoft Student Community. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Microsoft Student Community · Quezon City University`,
     },
     prism: {
-      theme: prismThemes.github,
+      // Dark code blocks in light mode (moon theme), readable on the navy surface.
+      theme: prismThemes.oneDark,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['http', 'json', 'bash'],
     },

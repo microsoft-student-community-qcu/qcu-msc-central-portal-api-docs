@@ -12,21 +12,29 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero', styles.heroBanner)}>
+    <header className={styles.hero}>
+      <div className={styles.heroSky} aria-hidden="true" />
+      <div className={styles.starfield} aria-hidden="true" />
+      <div className={styles.starfieldTwo} aria-hidden="true" />
       <div className="container">
-        <img src={useBaseUrl('img/banner.svg')} alt="QCU MSC banner" className={styles.heroBannerImg} />
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+        <img
+          src={useBaseUrl('img/banner.svg')}
+          alt="QCU MSC banner"
+          className={styles.heroBannerImg}
+        />
+        <Heading as="h1" className={styles.title}>
+          QCU MSC Central Portal
+          <span className={styles.titleAccent}>API Docs</span>
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className={styles.tagline}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/docs/intro">
-            Get Started
+            Read the Docs
           </Link>
           <Link
             className="button button--secondary button--lg"
             to="/docs/api/v1/applicants">
-            Browse API v1
+            Browse API Reference
           </Link>
         </div>
       </div>

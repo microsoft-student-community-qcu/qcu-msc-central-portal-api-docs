@@ -1,11 +1,37 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
+  padding: 2.5rem 0 4rem;
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureCard {
+  height: 100%;
+  text-align: left;
+  padding: 1.5rem;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: calc(var(--radius) - 4px);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 8px 20px -10px color-mix(in oklab, var(--brand-blue-deep) 40%, transparent);
+}
+
+.featureIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.featureCard h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureBody {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
 }
