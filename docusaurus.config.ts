@@ -27,6 +27,25 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  // Brand fonts used by the navbar logo, matching the portal frontend.
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
+    },
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous'},
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap',
+      },
+    },
+  ],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -73,11 +92,6 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'QCU MSC API Docs',
-      logo: {
-        alt: 'QCU MSC Logo',
-        src: 'img/logo.svg',
-      },
       items: [
         {
           type: 'docSidebar',
