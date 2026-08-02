@@ -115,6 +115,13 @@ const PATCHES = [
     '../guides/workflows/auth-workflow.md#applicant-account-activation-flow',
     '../../guides/workflows/auth-workflow.md#applicant-account-activation-flow',
   ],
+  // Upstream still lists the old placeholder Resend sender; the real domain is
+  // no-reply@msc-qcu.tech (see backend email.service.ts).
+  [
+    path.join('guides', 'workflows', 'email-notifications.md'),
+    '| `RESEND_FROM_EMAIL` | No | `no-reply@anonimi.cloud` | Verified Resend sender address |',
+    '| `RESEND_FROM_EMAIL` | No | `no-reply@msc-qcu.tech` | Verified Resend sender address |',
+  ],
 ];
 
 function applyPatches() {
