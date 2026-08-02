@@ -1,0 +1,41 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* QCU MSC brand palette (from the main portal frontend):
+   --primary: #f25022 (Microsoft orange)
+   --accent:  #0084d4 (Microsoft blue)
+   --green:   #7fba00 (Microsoft green) */
+
+:root {
+  --ifm-color-primary: #f25022;
+  --ifm-color-primary-dark: #e04418;
+  --ifm-color-primary-darker: #d33f16;
+  --ifm-color-primary-darkest: #ae3412;
+  --ifm-color-primary-light: #f3663e;
+  --ifm-color-primary-lighter: #f4714c;
+  --ifm-color-primary-lightest: #f69272;
+  --ifm-color-secondary: #0084d4;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #ff8a6b;
+  --ifm-color-primary-dark: #ff6f49;
+  --ifm-color-primary-darker: #ff6137;
+  --ifm-color-primary-darkest: #f64517;
+  --ifm-color-primary-light: #ffa58d;
+  --ifm-color-primary-lighter: #ffb3a0;
+  --ifm-color-primary-lightest: #ffd3c8;
+  --ifm-color-secondary: #3ea8e8;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle brand accent for the navbar when scrolled */
+.navbar--fixed-top.scrolled {
+  box-shadow: 0 1px 2px rgba(242, 80, 34, 0.18);
+}

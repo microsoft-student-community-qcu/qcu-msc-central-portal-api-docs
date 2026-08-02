@@ -1,0 +1,8 @@
+# Enforce LF for everything (Windows dev machines otherwise write CRLF,
+# which can corrupt shell scripts and workflow files on checkout).
+* text=auto eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
