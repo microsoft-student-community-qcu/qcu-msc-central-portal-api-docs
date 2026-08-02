@@ -288,11 +288,30 @@
   color: var(--ifm-color-emphasis-500);
 }
 
+/* ---- Endpoint groups ---- */
+.group {
+  margin-top: 2.2rem;
+}
+
+.group:first-of-type {
+  margin-top: 1.5rem;
+}
+
+.groupTitle {
+  margin: 0 0 1rem;
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-500);
+}
+
 /* ---- Sync note ---- */
 .syncNote {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem 4.5rem;
+  padding: 1.5rem 2rem 4.5rem;
 }
 
 .syncInner {
@@ -302,7 +321,7 @@
   padding: 1.1rem 1.4rem;
   border: 1px dashed var(--border);
   border-radius: calc(var(--radius) + 2px);
-  background: color-mix(in oklab, var(--secondary) 55%, transparent);
+  background: var(--card);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--muted-foreground);

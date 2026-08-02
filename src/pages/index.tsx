@@ -23,6 +23,11 @@ type EndpointCard = {
 
 const START_HERE: LinkCard[] = [
   {
+    title: 'Introduction',
+    desc: 'Base URL, response envelope, status codes, rate limits, and conventions.',
+    to: '/docs/intro',
+  },
+  {
     title: 'Quickstart',
     desc: 'Make your first API call in minutes — no account required.',
     to: '/docs/getting-started/quickstart',
@@ -32,62 +37,72 @@ const START_HERE: LinkCard[] = [
     desc: 'Sessions via Better Auth, role guards, and the account lifecycle.',
     to: '/docs/getting-started/authentication',
   },
-  {
-    title: 'Introduction',
-    desc: 'Base URL, response envelope, status codes, rate limits, and conventions.',
-    to: '/docs/intro',
-  },
 ];
 
-const ENDPOINTS: EndpointCard[] = [
+const ENDPOINT_GROUPS: {label: string; items: EndpointCard[]}[] = [
   {
-    title: 'Applicant Tracking',
-    path: '/api/v1/applicants',
-    methods: 'POST · GET · PATCH',
-    desc: 'Applicant records, documents, and the multi-step application flow.',
-    to: '/docs/api/v1/applicants',
+    label: 'Core domains',
+    items: [
+      {
+        title: 'Applicant Tracking',
+        path: '/api/v1/applicants',
+        methods: 'POST · GET · PATCH',
+        desc: 'Applicant records, documents, and the multi-step application flow.',
+        to: '/docs/api/v1/applicants',
+      },
+      {
+        title: 'User Management',
+        path: '/api/v1/users',
+        methods: 'POST · GET · PATCH',
+        desc: 'Account activation, profiles, and role management.',
+        to: '/docs/api/v1/users',
+      },
+      {
+        title: 'Events & Registration',
+        path: '/api/v1/events',
+        methods: 'POST · GET',
+        desc: 'Event listings, registration, and participation.',
+        to: '/docs/api/v1/events',
+      },
+    ],
   },
   {
-    title: 'User Management',
-    path: '/api/v1/users',
-    methods: 'POST · GET · PATCH',
-    desc: 'Account activation, profiles, and role management.',
-    to: '/docs/api/v1/users',
+    label: 'Public & devices',
+    items: [
+      {
+        title: 'OCR Verification',
+        path: '/api/v1/ocr',
+        methods: 'POST',
+        desc: 'Public student-ID verification with session-based lookup.',
+        to: '/docs/api/v1/ocr',
+      },
+      {
+        title: 'Setup Tokens',
+        path: '/api/v1/setup-token',
+        methods: 'POST',
+        desc: 'Managed-device authentication for kiosks and setup flows.',
+        to: '/docs/api/v1/setup-token',
+      },
+    ],
   },
   {
-    title: 'Events & Registration',
-    path: '/api/v1/events',
-    methods: 'POST · GET',
-    desc: 'Event listings, registration, and participation.',
-    to: '/docs/api/v1/events',
-  },
-  {
-    title: 'OCR Verification',
-    path: '/api/v1/ocr',
-    methods: 'POST',
-    desc: 'Public student-ID verification with session-based lookup.',
-    to: '/docs/api/v1/ocr',
-  },
-  {
-    title: 'Setup Tokens',
-    path: '/api/v1/setup-token',
-    methods: 'POST',
-    desc: 'Managed-device authentication for kiosks and setup flows.',
-    to: '/docs/api/v1/setup-token',
-  },
-  {
-    title: 'Versioning',
-    path: '/api/versioning',
-    methods: '',
-    desc: 'How breaking changes move between v1 and v2.',
-    to: '/docs/api/versioning',
-  },
-  {
-    title: 'Deprecation Policy',
-    path: '/api/deprecation-template',
-    methods: '',
-    desc: 'The lifecycle and communication of deprecated endpoints.',
-    to: '/docs/api/deprecation-template',
+    label: 'API lifecycle',
+    items: [
+      {
+        title: 'Versioning',
+        path: '/api/versioning',
+        methods: '',
+        desc: 'How breaking changes move between v1 and v2.',
+        to: '/docs/api/versioning',
+      },
+      {
+        title: 'Deprecation Policy',
+        path: '/api/deprecation-template',
+        methods: '',
+        desc: 'The lifecycle and communication of deprecated endpoints.',
+        to: '/docs/api/deprecation-template',
+      },
+    ],
   },
 ];
 
@@ -239,11 +254,16 @@ export default function Home(): ReactNode {
 
         <section className={clsx(styles.section, styles.tinted)}>
           <SectionHeader kicker="API reference" title="Every endpoint" />
-          <div className={styles.grid}>
-            {ENDPOINTS.map((endpoint) => (
-              <EndpointCardView key={endpoint.to} endpoint={endpoint} />
-            ))}
-          </div>
+          {ENDPOINT_GROUPS.map((group) => (
+            <div key={group.label} className={styles.group}>
+              <h3 className={styles.groupTitle}>{group.label}</h3>
+              <div className={styles.grid}>
+                {group.items.map((endpoint) => (
+                  <EndpointCardView key={endpoint.to} endpoint={endpoint} />
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
 
         <section className={styles.section}>
