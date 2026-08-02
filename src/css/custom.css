@@ -76,7 +76,7 @@
   --ifm-heading-color: var(--foreground);
   --ifm-heading-letter-spacing: -0.02em;
   --ifm-global-radius: var(--radius);
-  --ifm-card-border-radius: calc(var(--radius) + 12px); /* rounded-3xl */
+  --ifm-card-border-radius: calc(var(--radius) + 2px);
   --ifm-code-font-size: 92%;
   --ifm-code-background: var(--brand-blue-light);
   --ifm-code-color: oklch(0.28 0.1 252);
@@ -277,13 +277,13 @@ h3 {
   border: none;
   color: #fff;
   border-radius: 9999px;
-  box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--brand-orange) 55%, transparent);
+  box-shadow: 0 4px 16px -8px color-mix(in oklab, var(--brand-orange) 45%, transparent);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button--primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 34px -10px color-mix(in oklab, var(--brand-orange) 65%, transparent);
+  box-shadow: 0 8px 24px -10px color-mix(in oklab, var(--brand-orange) 55%, transparent);
 }
 
 .button--secondary,
@@ -292,7 +292,7 @@ h3 {
   border: 1px solid var(--border);
   color: var(--brand-blue-deep);
   border-radius: 9999px;
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 2px 12px -6px color-mix(in oklab, var(--brand-blue-deep) 25%, transparent);
 }
 
 [data-theme='dark'] .button--secondary {
@@ -301,18 +301,18 @@ h3 {
   color: oklch(0.92 0.02 240);
 }
 
-/* ---- Cards: white, rounded-3xl, navy ring + soft shadow ---- */
+/* ---- Cards: white, soft radius, navy ring + subtle shadow ---- */
 .card {
   background: var(--ifm-background-surface-color);
   border: var(--ring-card);
   border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 2px 14px -8px color-mix(in oklab, var(--brand-blue-deep) 22%, transparent);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 44px -12px color-mix(in oklab, var(--brand-blue-deep) 40%, transparent);
+  box-shadow: 0 10px 28px -14px color-mix(in oklab, var(--brand-blue-deep) 35%, transparent);
 }
 
 .card__header h3 {
