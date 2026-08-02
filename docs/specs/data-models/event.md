@@ -1,3 +1,7 @@
+---
+title: Event
+sidebar_position: 4
+---
 # Data Model — Event
 
 ## Overview

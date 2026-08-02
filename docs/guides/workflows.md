@@ -1,3 +1,7 @@
+---
+title: Core Workflows
+sidebar_position: 1
+---
 # Core Workflows
 
 ## Overview

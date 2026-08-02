@@ -1,3 +1,7 @@
+---
+title: API Reference Overview
+sidebar_position: 1
+---
 # API Documentation
 
 This folder contains versioned API documentation. Layout:

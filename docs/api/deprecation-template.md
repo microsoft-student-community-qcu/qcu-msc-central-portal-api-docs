@@ -1,3 +1,7 @@
+---
+title: Deprecation Policy
+sidebar_position: 4
+---
 # API Deprecation Notice Template
 
 Use this template to document deprecated endpoints.

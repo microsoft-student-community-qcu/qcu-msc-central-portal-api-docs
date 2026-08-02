@@ -1,3 +1,7 @@
+---
+title: Email Notifications
+sidebar_position: 6
+---
 # Workflow — Email Notifications
 
 ## Provider Architecture

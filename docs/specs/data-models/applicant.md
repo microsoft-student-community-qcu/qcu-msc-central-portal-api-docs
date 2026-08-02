@@ -1,3 +1,7 @@
+---
+title: Applicant
+sidebar_position: 3
+---
 # Data Model — Applicant
 
 ## Overview

@@ -1,3 +1,7 @@
+---
+title: Authentication
+sidebar_position: 3
+---
 # Workflow — User Authentication
 
 ## Overview

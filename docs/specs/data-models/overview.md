@@ -1,3 +1,7 @@
+---
+title: Data Models Overview
+sidebar_position: 1
+---
 # Data Models — Overview
 
 ## Introduction

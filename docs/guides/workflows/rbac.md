@@ -1,3 +1,7 @@
+---
+title: RBAC & Authorization
+sidebar_position: 4
+---
 # Workflow — RBAC & Authorization
 
 ## Role Hierarchy

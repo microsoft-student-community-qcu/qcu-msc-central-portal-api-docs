@@ -1,3 +1,7 @@
+---
+title: Applicant Pipeline
+sidebar_position: 2
+---
 # Workflow — Applicant Pipeline Management (ADMIN_HR)
 
 ## Overview

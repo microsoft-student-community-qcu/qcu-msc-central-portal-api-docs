@@ -94,8 +94,7 @@ const config: Config = {
     navbar: {
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'apiSidebar',
+          to: '/docs/',
           position: 'left',
           label: 'Docs',
         },
@@ -112,9 +111,9 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'API Basics', to: '/docs/intro'},
+            {label: 'Overview', to: '/docs/intro'},
+            {label: 'Quickstart', to: '/docs/getting-started/quickstart'},
             {label: 'API v1 Reference', to: '/docs/api/v1/applicants'},
-            {label: 'Workflows', to: '/docs/guides/workflows/overview'},
             {label: 'Data Models', to: '/docs/specs/data-models/overview'},
           ],
         },

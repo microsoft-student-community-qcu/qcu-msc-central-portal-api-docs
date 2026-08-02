@@ -1,3 +1,7 @@
+---
+title: Event Management
+sidebar_position: 5
+---
 # Workflow — Event Management
 
 ## Create Event (ADMIN_LOGISTICS)

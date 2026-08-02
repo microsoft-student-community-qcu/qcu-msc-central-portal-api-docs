@@ -1,3 +1,7 @@
+---
+title: Registration
+sidebar_position: 5
+---
 # Data Model — Registration
 
 ## Overview

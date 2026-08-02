@@ -70,6 +70,7 @@ function main() {
     }
 
     applyPatches();
+    applyFrontmatter();
 
     console.log('[sync-docs] Done.');
   } finally {
@@ -138,6 +139,73 @@ function applyPatches() {
   }
 
   console.log(`[sync-docs] Applied ${PATCHES.length} patches.`);
+}
+
+/**
+ * Curated titles/order for the docs site sidebar. Upstream files keep their
+ * folder names (which would otherwise leak into the sidebar as labels like
+ * "README" or H1-derived "Workflow — User Authentication"). This map injects
+ * clean frontmatter after sync so the docs site presents a real IA while the
+ * backend repo stays the source of truth for content.
+ *
+ * When upstream adds a new file, add it here or the sidebar (sidebars.ts)
+ * must reference it explicitly — missing entries fall back to H1 titles.
+ */
+const FRONTMATTER = {
+  [path.join('api', 'README.md')]: { title: 'API Reference Overview', sidebar_position: 1 },
+  [path.join('api', 'versioning.md')]: { title: 'Versioning', sidebar_position: 3 },
+  [path.join('api', 'deprecation-template.md')]: { title: 'Deprecation Policy', sidebar_position: 4 },
+  [path.join('api', 'v2', 'README.md')]: { title: 'v2 (Next)', sidebar_position: 1 },
+
+  [path.join('guides', 'workflows.md')]: { title: 'Core Workflows', sidebar_position: 1 },
+  [path.join('guides', 'workflows', 'applicant-tracking.md')]: { title: 'Applicant Pipeline', sidebar_position: 2 },
+  [path.join('guides', 'workflows', 'auth-workflow.md')]: { title: 'Authentication', sidebar_position: 3 },
+  [path.join('guides', 'workflows', 'rbac.md')]: { title: 'RBAC & Authorization', sidebar_position: 4 },
+  [path.join('guides', 'workflows', 'event-management.md')]: { title: 'Event Management', sidebar_position: 5 },
+  [path.join('guides', 'workflows', 'email-notifications.md')]: { title: 'Email Notifications', sidebar_position: 6 },
+
+  [path.join('specs', 'data-models', 'overview.md')]: { title: 'Data Models Overview', sidebar_position: 1 },
+  [path.join('specs', 'data-models', 'user.md')]: { title: 'User', sidebar_position: 2 },
+  [path.join('specs', 'data-models', 'applicant.md')]: { title: 'Applicant', sidebar_position: 3 },
+  [path.join('specs', 'data-models', 'event.md')]: { title: 'Event', sidebar_position: 4 },
+  [path.join('specs', 'data-models', 'registration.md')]: { title: 'Registration', sidebar_position: 5 },
+  [path.join('specs', 'data-models', 'sponsorship-inquiry.md')]: { title: 'Sponsorship Inquiry', sidebar_position: 6 },
+
+  [path.join('specs', 'PRD-V1.md')]: { title: 'Product Requirements (PRD)', sidebar_position: 1 },
+  [path.join('specs', 'DTM.md')]: { title: 'Development Timeline', sidebar_position: 2 },
+};
+
+function applyFrontmatter() {
+  let count = 0;
+  for (const [relative, meta] of Object.entries(FRONTMATTER)) {
+    const file = path.join(localDocsDir, relative);
+
+    if (!existsSync(file)) {
+      console.warn(`[sync-docs] Frontmatter target missing (upstream removed it?): ${relative}`);
+      continue;
+    }
+
+    const content = readFileSync(file, 'utf8');
+    const extra = Object.entries(meta).map(([key, value]) => `${key}: ${value}`).join('\n');
+
+    let next;
+    if (content.startsWith('---\n')) {
+      // Merge into an existing frontmatter block.
+      const close = content.indexOf('\n---', 4);
+      if (close === -1) {
+        throw new Error(`[sync-docs] Unterminated frontmatter in ${relative}.`);
+      }
+      const rest = content.slice(close + 4);
+      next = `---\n${content.slice(4, close)}\n${extra}${rest}`;
+    } else {
+      next = `---\n${extra}\n---\n${content}`;
+    }
+
+    writeFileSync(file, next);
+    count += 1;
+  }
+
+  console.log(`[sync-docs] Injected frontmatter into ${count} files.`);
 }
 
 function countFiles(dir) {

@@ -1,3 +1,7 @@
+---
+title: Sponsorship Inquiry
+sidebar_position: 6
+---
 # Data Model — Sponsorship Inquiry
 
 ## Overview

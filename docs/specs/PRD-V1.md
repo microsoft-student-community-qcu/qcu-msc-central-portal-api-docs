@@ -1,3 +1,7 @@
+---
+title: Product Requirements (PRD)
+sidebar_position: 1
+---
 # QCU MSC Central Portal - Product Requirement Document (PRD)
 *July V1 Release*
 

@@ -1,3 +1,7 @@
+---
+title: User
+sidebar_position: 2
+---
 # Data Model — User
 
 ## Overview

@@ -1,3 +1,7 @@
+---
+title: Versioning
+sidebar_position: 3
+---
 # API Versioning
 
 All public APIs must use explicit versioning in their paths and documentation (for example, `/api/v1/...`).

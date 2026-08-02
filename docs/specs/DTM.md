@@ -1,3 +1,7 @@
+---
+title: Development Timeline
+sidebar_position: 2
+---
 # QCU MSC Central Portal: V1 Development Timeline & Milestones
 *Document Name: MSC Central Portal - V1 Master Blueprint Timeline*
 
