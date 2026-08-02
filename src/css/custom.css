@@ -140,6 +140,8 @@
   --ifm-navbar-shadow: 0 1px 0 0 oklch(0.3 0.06 258), 0 8px 24px -16px oklch(0 0 0 / 0.6);
   --ifm-footer-background-color: oklch(0.14 0.06 262);
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.12);
+  --muted: oklch(0.27 0.07 258);
+  --ifm-table-head-color: oklch(0.92 0.02 240);
 
   --ifm-color-emphasis-100: oklch(0.3 0.06 258);
   --ifm-color-emphasis-200: oklch(0.38 0.06 258);
@@ -354,8 +356,16 @@ code {
   background: var(--muted);
 }
 
+.theme-doc-markdown table thead th {
+  color: var(--ifm-table-head-color, var(--ifm-color-emphasis-700));
+}
+
 .theme-doc-markdown table tbody tr:hover {
   background: color-mix(in oklab, var(--brand-blue-light) 45%, transparent);
+}
+
+[data-theme='dark'] .theme-doc-markdown table tbody tr:hover {
+  background: oklch(0.24 0.07 258);
 }
 
 /* ---- Sidebar ---- */
