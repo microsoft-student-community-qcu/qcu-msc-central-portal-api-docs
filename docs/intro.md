@@ -3,7 +3,7 @@ sidebar_position: 1
 slug: /intro
 ---
 
-# API Basics
+# Introduction
 
 Everything the frontend team needs before touching the QCU MSC Central Portal backend API.
 

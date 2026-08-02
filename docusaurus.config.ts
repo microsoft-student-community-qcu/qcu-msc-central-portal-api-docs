@@ -84,6 +84,12 @@ const config: Config = {
         indexBlog: false,
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [{from: '/docs/', to: '/docs/intro'}],
+      },
+    ],
   ],
 
   themeConfig: {
@@ -100,7 +106,7 @@ const config: Config = {
     navbar: {
       items: [
         {
-          to: '/docs/',
+          to: '/docs/intro',
           position: 'left',
           label: 'Docs',
         },

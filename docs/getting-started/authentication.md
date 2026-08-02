@@ -61,6 +61,6 @@ Both return the standard `{ "success": false, "message": "..." }` envelope.
 
 ## Also read
 
-- [API Basics — Authentication](/docs/intro#authentication) — same facts, more context
+- [Introduction — Authentication](/docs/intro#authentication) — same facts, more context
 - [Workflow — User Authentication](/docs/guides/workflows/auth-workflow) — full flow
 - [RBAC & Authorization](/docs/guides/workflows/rbac) — guard and role design

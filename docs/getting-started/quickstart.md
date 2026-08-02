@@ -57,7 +57,7 @@ Every endpoint uses the same JSON contract:
 - **Error** — `{ "success": false, "message": "..." }` (the key is always `message`, never `error`)
 - **Validation error** — the above plus `errors: { "fieldName": ["..."] }` for Zod field-level details
 
-Full details in [API Basics — Response Envelope](/docs/intro#response-envelope).
+Full details in [Introduction — Response Envelope](/docs/intro#response-envelope).
 
 ## 4. Authenticate for protected routes
 
