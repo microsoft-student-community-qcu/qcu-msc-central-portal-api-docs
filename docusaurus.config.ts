@@ -12,15 +12,15 @@ const BACKEND_DOCS_ROOT = `${BACKEND_REPO}/tree/main/docs/`;
 const config: Config = {
   title: 'QCU MSC Central Portal — API Docs',
   tagline: 'API reference for the QCU Microsoft Student Community Central Portal backend',
-  favicon: 'img/favicon.svg',
+  favicon: 'img/qcu-msc-logo.png',
 
   future: {
     v4: true,
   },
 
-  // Served from GitHub Pages: https://<org>.github.io/<repo>/
-  url: `https://${ORG_NAME}.github.io`,
-  baseUrl: `/${PROJECT_NAME}/`,
+  // Served from Cloudflare Pages: https://api.msc-qcu.tech/
+  url: 'https://api.msc-qcu.tech',
+  baseUrl: '/',
 
   organizationName: ORG_NAME,
   projectName: PROJECT_NAME,
@@ -44,6 +44,10 @@ const config: Config = {
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Roboto:wght@500;600;700&family=Rubik:wght@400;500&family=Sora:wght@600;700;800&display=swap',
       },
     },
+    {
+      tagName: 'link',
+      attributes: {rel: 'apple-touch-icon', href: 'img/qcu-msc-logo.png'},
+    },
   ],
 
   i18n: {
@@ -57,7 +61,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: 'docs',
+          // Docs live at the site root: api.msc-qcu.tech/<section>/<page>.
+          // URLs mirror the API paths (e.g. /api/v1/applicants).
+          routeBasePath: '/',
           // "Edit this page" links point to the source of truth (backend repo docs).
           editUrl: BACKEND_DOCS_ROOT,
         },
@@ -74,7 +80,7 @@ const config: Config = {
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
-        docsRouteBasePath: '/docs',
+        docsRouteBasePath: '/',
         indexBlog: false,
       },
     ],
@@ -94,7 +100,7 @@ const config: Config = {
     navbar: {
       items: [
         {
-          to: '/docs/',
+          to: '/',
           position: 'left',
           label: 'Docs',
         },
@@ -111,10 +117,10 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Overview', to: '/docs/intro'},
-            {label: 'Quickstart', to: '/docs/getting-started/quickstart'},
-            {label: 'API v1 Reference', to: '/docs/api/v1/applicants'},
-            {label: 'Data Models', to: '/docs/specs/data-models/overview'},
+            {label: 'Overview', to: '/intro'},
+            {label: 'Quickstart', to: '/getting-started/quickstart'},
+            {label: 'API v1 Reference', to: '/api/v1/applicants'},
+            {label: 'Data Models', to: '/specs/data-models/overview'},
           ],
         },
         {

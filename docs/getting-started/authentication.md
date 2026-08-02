@@ -42,7 +42,7 @@ Endpoints are guarded by middleware:
 | `requireMemberOrAdmin` | `MEMBER` and admins |
 
 Each endpoint doc page states which guard applies. Public endpoints (e.g.
-[OCR verification](/docs/api/v1/ocr), applicant submission) need no authentication.
+[OCR verification](/api/v1/ocr), applicant submission) need no authentication.
 
 ## Error semantics
 
@@ -55,12 +55,12 @@ Both return the standard `{ "success": false, "message": "..." }` envelope.
 
 - Applicants get accounts via the application pipeline and set their password
   through an emailed activation link — see
-  [Applicant Account Activation Flow](/docs/guides/workflows/auth-workflow#applicant-account-activation-flow).
+  [Applicant Account Activation Flow](/guides/workflows/auth-workflow#applicant-account-activation-flow).
 - Admins can also grant access via
-  [Setup Tokens](/docs/api/v1/setup-token) for managed devices/setup flows.
+  [Setup Tokens](/api/v1/setup-token) for managed devices/setup flows.
 
 ## Also read
 
-- [API Basics — Authentication](/docs/intro#authentication) — same facts, more context
-- [Workflow — User Authentication](/docs/guides/workflows/auth-workflow) — full flow
-- [RBAC & Authorization](/docs/guides/workflows/rbac) — guard and role design
+- [API Basics — Authentication](/intro#authentication) — same facts, more context
+- [Workflow — User Authentication](/guides/workflows/auth-workflow) — full flow
+- [RBAC & Authorization](/guides/workflows/rbac) — guard and role design

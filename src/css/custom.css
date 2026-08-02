@@ -368,14 +368,74 @@ code {
   background: oklch(0.24 0.07 258);
 }
 
-/* ---- Sidebar ---- */
+/* ---- Sidebar: clear hierarchy — micro-label categories vs. body items ---- */
+.theme-doc-sidebar-container {
+  --ifm-menu-link-padding-vertical: 0.3rem;
+  --ifm-menu-link-padding-horizontal: 0.75rem;
+  font-size: 14.5px;
+}
+
+.menu__list-item {
+  margin-top: 0.1rem;
+}
+
+.menu__list-item:not(:first-child) {
+  margin-top: 0.15rem;
+}
+
+/* Category titles: frontend micro-label style (Roboto, uppercase, tracked) */
+.menu__link--sublist {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-500);
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.menu__list-item:not(:first-child) > .menu__link--sublist,
+.menu__list-item--collapsed:not(:first-child) {
+  margin-top: 0.6rem;
+}
+
+.menu__list-item:not(:first-child) > .menu__link--sublist {
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  padding-top: 0.65rem;
+}
+
+/* Items: Rubik, quiet, small hover pill */
 .menu__link {
-  border-radius: 0.625rem;
-  font-weight: 500;
+  border-radius: 0.5rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.menu__link:hover {
+  background: var(--ifm-menu-color-background-hover);
+  color: var(--ifm-color-emphasis-900);
 }
 
 .menu__link--active:not(.menu__link--sublist) {
   font-weight: 600;
+}
+
+/* Nested lists (v1/v2 categories) indent cleanly */
+.menu__list .menu__list {
+  margin-top: 0.25rem;
+}
+
+.menu__list .menu__list .menu__link {
+  font-size: 13.5px;
+}
+
+/* Caret color matches the muted category title */
+.menu__caret,
+.menu__list-item-collapsible .menu__link--sublist-caret {
+  color: var(--ifm-color-emphasis-500);
 }
 
 /* ---- Footer: deep navy, MS stripe on top ---- */
